@@ -1,4 +1,4 @@
-// implementation of a stack dtaa structure
+// implementation of a stack data structure
 #include <iostream>
 #include <string>
 
