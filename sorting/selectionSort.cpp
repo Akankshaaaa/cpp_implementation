@@ -61,7 +61,7 @@ int main()
 	
 	selectionSort(myarr);
 
-	cout<<"Unsorted Array: "<<endl;
+	cout<<"Sorted Array: "<<endl;
 
 	printArray(myarr);
 
