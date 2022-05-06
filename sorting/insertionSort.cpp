@@ -1,57 +1,60 @@
-// insertion sort
+// implementation of Insertion Sort
+
 #include <iostream>
 
 using namespace std;
 
-void swap(int arr[], int min, int i)
+void insertionSort(int arr[])
 {
-	int temp;
-	temp = arr[i];
-	arr[i] = arr[min];;
-	arr[min] = temp;
-}
+	int j = 0;
+	int key;
 
-void insertionSort(int arr[], int size)
-{
-	int min;
-	int temp;
-	for(int i = 0; i < size - 1; i++)
+	for(int i = 1; i < 5; i++)
 	{
-		min = i;
-		for(int j = i+1; j < size; j++)
+		key = arr[i];	// select next element
+		j = i - 1;
+
+		// all values to the left of the key that are greater than the key
+		while(j >= 0 && arr[j] > key)	
 		{
-			if(arr[j] < arr[min])
-			{
-				min = j;
-			}
+			arr[j+1] = arr[j];	// arr[j] shifted to right
+			j = j - 1;
 		}
-		swap(arr, min, i);
-		
+		arr[j+1] = key;	
 	}
 }
 
 
-void printArray(int arr[], int size)
+void printArray(int arr[])
 {
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < 5; i++)
 	{
 		cout<<arr[i]<<" ";
 	}
 	cout<<endl;
-
 }
-
 
 int main()
 {
-	int arr[] = {6, 5, 4, 2, 3, 1, 7};
-	int size = sizeof(arr)/sizeof(int);
+	int myarr[5];
 
-	printArray(arr, size);
+	cout<<"Enter 5 integers in random order "<<endl;
 
-	insertionSort(arr, size);
+	for(int i = 0; i < 5; i++)
+	{
+		cin>>myarr[i];
+	}
 
-	printArray(arr, size);
+	cout<<"Unsorted Array: "<<endl;
+
+	printArray(myarr);
+	
+	insertionSort(myarr);
+
+	cout<<"Sorted Array: "<<endl;
+
+	printArray(myarr);
+
 
 	return 0;
 }
