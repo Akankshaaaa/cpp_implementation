@@ -1,57 +1,69 @@
-//selection sort
+// implementation of Selection Sort
+
 #include <iostream>
 
 using namespace std;
 
-void swap(int arr[], int min, int i)
+void swap(int arr[], int a, int b)
 {
 	int temp;
-	temp = arr[min];
-	arr[min] = arr[i];;
-	arr[i] = temp;
+	temp = arr[a];
+	arr[a] = arr[b];;
+	arr[b] = temp;
 }
 
-void selectSort(int arr[], int size)
+void selectionSort(int arr[])	// arrays are passed by address in c++
 {
-	int min;
-	int temp;
-
-	for(int i = 0; i < size - 1; i++)
+	for(int i = 0; i < 4; i++)
 	{
-		min = i;
-		for(int j = i+1; j < size; j++)
+		int min = i;
+
+		// find min element
+		for(int j = i+1; j < 5; j++)
 		{
-			if(arr[min] > arr[j])
+			// for ascending order. if sorting in descending order then simply flip the operator
+			if(arr[j] < arr[min])
 			{
 				min = j;
 			}
-		
-		swap(arr, min, i);
+		}
+		if(min != i)
+		{
+			// swap min element with ith element
+			swap(arr, i, min);
 		}
 	}
-
 }
 
-void printArray(int arr[], int size)
+void printArray(int arr[])
 {
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < 5; i++)
 	{
 		cout<<arr[i]<<" ";
 	}
 	cout<<endl;
-
 }
 
 int main()
 {
-	int arr[] = {5, 4, 1, 3, 2};
-	int size = sizeof(arr)/sizeof(int);
+	int myarr[5];
 
-	printArray(arr, size);
+	cout<<"Enter 5 integers in random order "<<endl;
 
-	selectSort(arr, size);
+	for(int i = 0; i < 5; i++)
+	{
+		cin>>myarr[i];
+	}
 
-	printArray(arr, size);
+	cout<<"Unsorted Array: "<<endl;
+
+	printArray(myarr);
+	
+	selectionSort(myarr);
+
+	cout<<"Unsorted Array: "<<endl;
+
+	printArray(myarr);
 
 	return 0;
 }
